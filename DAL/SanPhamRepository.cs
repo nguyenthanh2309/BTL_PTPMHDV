@@ -28,16 +28,16 @@ namespace DAL
                 throw ex;
             }
         }
-        public bool Create(SanPham model)
+        public bool Create(SanPham sp)
         {
             string msgError = "";
             try
             {
                 var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "sp_hoadon_create",
-                "@TenKH", model.TenKH,
-                "@Diachi", model.Diachi,
-                "@TrangThai", model.TrangThai,
-                "@list_json_chitiethoadon", model.list_json_chitiethoadon != null ? MessageConvert.SerializeObject(model.list_json_chitiethoadon) : null);
+                "@TenSP", sp.TenSP,
+                "@Diachi", sp.Diachi,
+                "@TrangThai", so.TrangThai,
+                "@list_json_chitiethoadon", sp.list_json_chitiethoadon != null ? MessageConvert.SerializeObject(model.list_json_chitiethoadon) : null);
                 if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
                 {
                     throw new Exception(Convert.ToString(result) + msgError);
@@ -49,7 +49,7 @@ namespace DAL
                 throw ex;
             }
         }
-        public bool Update(HoaDonModel model)
+        public bool Update(SanPham sp)
         {
             string msgError = "";
             try
