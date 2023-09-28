@@ -7,11 +7,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BTL", "BTL\BTL.csproj", "{5
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DTO", "DTO\DTO.csproj", "{F52BD45D-8502-4EA3-8237-9062B2155390}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DAL", "DAL\DAL.csproj", "{4C4F11C8-0F78-41C8-8CCA-1BF5E1F0389C}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BLL", "BLL\BLL.csproj", "{5861540A-F351-460A-AB8A-7BB4F46FBFC5}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Stored Procedure", "Stored Procedure", "{7623D4A2-3F27-48B6-B97D-C0A3BB18065C}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Stored Procedure", "Stored Procedure", "{8A22EC57-1F6C-4721-A8FA-211160647D3C}"
+	ProjectSection(SolutionItems) = preProject
+		Stored Procedure\QLNT_SP.sql = Stored Procedure\QLNT_SP.sql
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{9D29879D-DC68-4CB3-87AF-E1EA8F470C41}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,14 +30,14 @@ Global
 		{F52BD45D-8502-4EA3-8237-9062B2155390}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F52BD45D-8502-4EA3-8237-9062B2155390}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F52BD45D-8502-4EA3-8237-9062B2155390}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4C4F11C8-0F78-41C8-8CCA-1BF5E1F0389C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4C4F11C8-0F78-41C8-8CCA-1BF5E1F0389C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4C4F11C8-0F78-41C8-8CCA-1BF5E1F0389C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4C4F11C8-0F78-41C8-8CCA-1BF5E1F0389C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5861540A-F351-460A-AB8A-7BB4F46FBFC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5861540A-F351-460A-AB8A-7BB4F46FBFC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5861540A-F351-460A-AB8A-7BB4F46FBFC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5861540A-F351-460A-AB8A-7BB4F46FBFC5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D29879D-DC68-4CB3-87AF-E1EA8F470C41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D29879D-DC68-4CB3-87AF-E1EA8F470C41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D29879D-DC68-4CB3-87AF-E1EA8F470C41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D29879D-DC68-4CB3-87AF-E1EA8F470C41}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

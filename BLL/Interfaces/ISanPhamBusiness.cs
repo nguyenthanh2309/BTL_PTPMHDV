@@ -5,12 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DAL
+namespace BLL
 {
-    public partial interface ISanPhamRepository
+    public partial interface ISanPhamBusiness
     {
         SanPham GetSanPhamByID(string id);
-        bool Create(SanPham model);
-        bool Update(SanPham model);
+        bool Create(SanPham sp);
+        bool Update(SanPham sp);
     }
 }
