@@ -14,12 +14,32 @@ namespace BTL.Controllers
         {
             _sanPhamBusiness = sanPhamBusiness;
         }
-        [Route("/getsanphambyid/{id}")]
+        [Route("/getbyid/{id}")]
         [HttpGet]
         public SanPham GetSanPhamByID(string id)
         {
             return _sanPhamBusiness.GetSanPhamByID(id);
         }
-        [Route("createsanpham")]
+        [Route("create")]
+        [HttpPost]
+        public SanPham Create([FromBody] SanPham sp)
+        {
+            _sanPhamBusiness.Create(sp);
+            return sp;
+        }
+        [Route("delete")]
+        [HttpDelete]
+        public IActionResult Delete(string id)
+        {
+            try
+            {
+                _sanPhamBusiness.Delete(id);
+                return Ok();
+            }
+            catch (Exception)
+            {
+                return BadRequest("Not a valid id");
+            }
+        }
     }
 }

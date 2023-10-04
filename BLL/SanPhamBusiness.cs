@@ -16,13 +16,17 @@ namespace BLL
         {
             return _res.GetSanPhamByID(id);
         }
-        public bool Create(SanPham model)
+        public bool Create(SanPham sp)
         {
-            return _res.Create(model);
+            return _res.Create(sp);
         }
-        public bool Update(SanPham model)
+        public bool Update(SanPham sp)
         {
-            return _res.Update(model);
+            return _res.Update(sp);
+        }
+
+        public SanPham Delete(string id) {
+            return _res.Delete(id);
         }
 
     }

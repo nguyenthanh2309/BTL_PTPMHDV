@@ -1,4 +1,7 @@
 
+using BLL;
+using DAL;
+
 namespace BTL
 {
     public class Program
@@ -13,6 +16,9 @@ namespace BTL
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+            builder.Services.AddTransient<IDatabaseHelper, DatabaseHelper>();
+            builder.Services.AddTransient<ISanPhamRepository, SanPhamRepository>();
+            builder.Services.AddTransient<ISanPhamBusiness, SanPhamBusiness>();
 
             var app = builder.Build();
 

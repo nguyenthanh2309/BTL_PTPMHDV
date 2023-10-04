@@ -10,7 +10,8 @@ namespace DAL
     public partial interface ISanPhamRepository
     {
         SanPham GetSanPhamByID(string id);
-        bool Create(SanPham model);
-        bool Update(SanPham model);
+        bool Create(SanPham sp);
+        bool Update(SanPham sp);
+        void Delete(string id);
     }
 }

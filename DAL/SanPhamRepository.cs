@@ -1,4 +1,5 @@
 ﻿using DTO;
+using System.Reflection;
 
 namespace DAL
 {
@@ -34,6 +35,21 @@ namespace DAL
         {
             return true;
         }
+
+        public void Delete(string id)
+        {
+            string msgError = "";
+            try
+            {
+                var dt = _dbHelper.ExecuteSProcedureReturnDataTable(out msgError, "sp_delete_san_pham",
+                     "@id", id);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         //public bool Create(SanPham model)
         //{
         //    string msgError = "";

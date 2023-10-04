@@ -12,5 +12,6 @@ namespace BLL
         SanPham GetSanPhamByID(string id);
         bool Create(SanPham sp);
         bool Update(SanPham sp);
+        SanPham Delete(string id);
     }
 }
