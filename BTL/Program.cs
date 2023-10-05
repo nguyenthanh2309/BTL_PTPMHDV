@@ -1,6 +1,8 @@
 
 using BLL;
+using BLL.Interfaces;
 using DAL;
+using DAL.Interfaces;
 
 namespace BTL
 {
@@ -17,8 +19,10 @@ namespace BTL
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
             builder.Services.AddTransient<IDatabaseHelper, DatabaseHelper>();
-            builder.Services.AddTransient<ISanPhamRepository, SanPhamRepository>();
+            builder.Services.AddTransient<ISanPhamRepos, SanPhamRepos>();
             builder.Services.AddTransient<ISanPhamBusiness, SanPhamBusiness>();
+            builder.Services.AddTransient<ITaiKhoanRepos, TaiKhoanRepos>();
+            builder.Services.AddTransient<ITaiKhoanBusiness, TaiKhoanBusiness>();
 
             var app = builder.Build();
 

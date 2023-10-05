@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33723.286
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BTL", "BTL\BTL.csproj", "{5D2E11D1-B957-4BD3-8655-EA5F717F72B0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API.Admin", "BTL\API.Admin.csproj", "{5D2E11D1-B957-4BD3-8655-EA5F717F72B0}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DTO", "DTO\DTO.csproj", "{F52BD45D-8502-4EA3-8237-9062B2155390}"
 EndProject
@@ -14,7 +14,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Stored Procedure", "Stored 
 		Stored Procedure\QLNT_SP.sql = Stored Procedure\QLNT_SP.sql
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{9D29879D-DC68-4CB3-87AF-E1EA8F470C41}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DAL", "DAL\DAL.csproj", "{9D29879D-DC68-4CB3-87AF-E1EA8F470C41}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

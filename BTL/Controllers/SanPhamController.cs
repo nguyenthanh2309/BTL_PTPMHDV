@@ -5,7 +5,7 @@ using DTO;
 
 namespace BTL.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/admin/[controller]")]
     [ApiController]
     public class SanPhamController : ControllerBase
     {
@@ -22,24 +22,28 @@ namespace BTL.Controllers
         }
         [Route("create")]
         [HttpPost]
-        public SanPham Create([FromBody] SanPham sp)
+        public IActionResult Create([FromBody] SanPham sp)
         {
             _sanPhamBusiness.Create(sp);
-            return sp;
+            return Ok("San pham da duoc tao thanh cong");
+        }
+        [Route("update")]
+        [HttpPut]
+        public IActionResult Update(string id, [FromBody] SanPham sp)
+        {
+            _sanPhamBusiness.Update(id, sp);
+            return Ok("San pham da duoc cap nhat thanh cong");
         }
         [Route("delete")]
         [HttpDelete]
         public IActionResult Delete(string id)
         {
-            try
-            {
-                _sanPhamBusiness.Delete(id);
-                return Ok();
-            }
-            catch (Exception)
-            {
-                return BadRequest("Not a valid id");
-            }
+                SanPham target = _sanPhamBusiness.GetSanPhamByID(id);
+                if (target != null) { 
+                    _sanPhamBusiness.Delete(id);
+                    return Ok();
+                }
+            return BadRequest("Co loi xay ra.");
         }
     }
 }

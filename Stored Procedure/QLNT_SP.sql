@@ -15,12 +15,13 @@ create proc sp_create_san_pham @id nvarchar(10),
 @phanloaiid nvarchar(10),
 @nhaccid nvarchar(10),
 @gia int,
+@soluong int,
 @vatlieu nvarchar(max),
 @kichthuoc nvarchar(max)
 as
 	begin 
 		insert into SanPham values (
-			@id, @tensp, @phanloaiid, @nhaccid, @gia, @vatlieu, @kichthuoc
+			@id, @tensp, @phanloaiid, @nhaccid, @gia, @soluong, @vatlieu, @kichthuoc
 		)
 	end
 go
@@ -30,6 +31,7 @@ create proc sp_update_san_pham @id nvarchar(10),
 @phanloaiid nvarchar(10),
 @nhaccid nvarchar(10),
 @gia int,
+@soluong int,
 @vatlieu nvarchar(max),
 @kichthuoc nvarchar(max)
 as
@@ -39,6 +41,7 @@ as
 		PhanLoaiID = @phanloaiid,
 		NhaCCID = @nhaccid,
 		Gia = @gia,
+		SoLuong = @soluong,
 		VatLieu = @vatlieu,
 		KichThuoc = @kichthuoc
 		where ID = @id

@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    public partial interface ISanPhamRepository
+    public partial interface ISanPhamRepos
     {
         SanPham GetSanPhamByID(string id);
         bool Create(SanPham sp);
-        bool Update(SanPham sp);
+        bool Update(string id, SanPham sp);
         void Delete(string id);
     }
 }

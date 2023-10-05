@@ -7,8 +7,8 @@ namespace BLL
 {
     public class SanPhamBusiness:ISanPhamBusiness
     {
-        private ISanPhamRepository _res;
-        public SanPhamBusiness(ISanPhamRepository res)
+        private ISanPhamRepos _res;
+        public SanPhamBusiness(ISanPhamRepos res)
         {
             _res = res;
         }
@@ -20,13 +20,13 @@ namespace BLL
         {
             return _res.Create(sp);
         }
-        public bool Update(SanPham sp)
+        public bool Update(string id, SanPham sp)
         {
-            return _res.Update(sp);
+            return _res.Update(id, sp);
         }
 
-        public SanPham Delete(string id) {
-            return _res.Delete(id);
+        public void Delete(string id) {
+            _res.Delete(id);
         }
 
     }
