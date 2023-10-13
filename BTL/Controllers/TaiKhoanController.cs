@@ -3,6 +3,7 @@ using BLL;
 using BLL.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Utils;
 
 namespace API.Admin.Controllers
 {
@@ -26,14 +27,16 @@ namespace API.Admin.Controllers
         public IActionResult Create([FromBody] TaiKhoan tk)
         {
             _taiKhoanBusiness.Create(tk);
-            return Ok("San pham da duoc tao thanh cong");
+            return Ok("Tai khoan da duoc tao thanh cong");
         }
         [Route("update")]
         [HttpPut]
         public IActionResult Update(string id, [FromBody] TaiKhoan tk)
         {
+            TaiKhoan tk_target = _taiKhoanBusiness.GetTaiKhoanByID(id);
+            UtilFunctions.SetDefaultIfEmpty(tk, tk_target);
             _taiKhoanBusiness.Update(id, tk);
-            return Ok("San pham da duoc cap nhat thanh cong");
+            return Ok("Tai khoan da duoc cap nhat thanh cong");
         }
         [Route("delete")]
         [HttpDelete]
@@ -43,9 +46,9 @@ namespace API.Admin.Controllers
             if (target != null)
             {
                 _taiKhoanBusiness.Delete(id);
-                return Ok();
+                return Ok("Da xoa tai khoan nay");
             }
-            return BadRequest("Co loi xay ra.");
+            return BadRequest("Co loi xay ra");
         }
     }
 }

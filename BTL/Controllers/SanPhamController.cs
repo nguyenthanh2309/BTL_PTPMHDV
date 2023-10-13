@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using BLL;
 using DTO;
+using Utils;
 
 namespace BTL.Controllers
 {
@@ -31,6 +32,8 @@ namespace BTL.Controllers
         [HttpPut]
         public IActionResult Update(string id, [FromBody] SanPham sp)
         {
+            SanPham sp_target = _sanPhamBusiness.GetSanPhamByID(id);
+            UtilFunctions.SetDefaultIfEmpty(sp, sp_target);
             _sanPhamBusiness.Update(id, sp);
             return Ok("San pham da duoc cap nhat thanh cong");
         }
@@ -41,9 +44,9 @@ namespace BTL.Controllers
                 SanPham target = _sanPhamBusiness.GetSanPhamByID(id);
                 if (target != null) { 
                     _sanPhamBusiness.Delete(id);
-                    return Ok();
+                    return Ok("Da xoa san pham nay");
                 }
-            return BadRequest("Co loi xay ra.");
+            return BadRequest("Co loi xay ra");
         }
     }
 }

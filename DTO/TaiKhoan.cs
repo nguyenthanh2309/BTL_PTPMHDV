@@ -18,5 +18,6 @@ namespace DTO
         [ForeignKey("LoaiTaiKhoanID")]
         public string LoaiTaiKhoanID { get; set; }
         public LoaiTaiKhoan LoaiTaiKhoan { get; set; }
+        public string Token { get; set; }
     }
 }

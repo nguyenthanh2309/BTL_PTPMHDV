@@ -11,10 +11,19 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BLL", "BLL\BLL.csproj", "{5
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Stored Procedure", "Stored Procedure", "{8A22EC57-1F6C-4721-A8FA-211160647D3C}"
 	ProjectSection(SolutionItems) = preProject
-		Stored Procedure\QLNT_SP.sql = Stored Procedure\QLNT_SP.sql
+		Stored Procedure\KhachHang_SP.sql = Stored Procedure\KhachHang_SP.sql
+		Stored Procedure\Login_SP.sql = Stored Procedure\Login_SP.sql
+		Stored Procedure\SanPham_SP.sql = Stored Procedure\SanPham_SP.sql
+		Stored Procedure\TaiKhoan_sp.sql = Stored Procedure\TaiKhoan_sp.sql
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DAL", "DAL\DAL.csproj", "{9D29879D-DC68-4CB3-87AF-E1EA8F470C41}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API.Client", "API.Client\API.Client.csproj", "{66CCFC16-57F3-4AA4-87D5-9E08BA028344}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Utils", "Utils\Utils.csproj", "{2A490F8C-DAE9-4AD2-A7E6-DC1BFB64C1E5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gateway", "Gateway\Gateway.csproj", "{934353FC-8133-4136-88ED-2B87028A5877}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -38,6 +47,18 @@ Global
 		{9D29879D-DC68-4CB3-87AF-E1EA8F470C41}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9D29879D-DC68-4CB3-87AF-E1EA8F470C41}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9D29879D-DC68-4CB3-87AF-E1EA8F470C41}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66CCFC16-57F3-4AA4-87D5-9E08BA028344}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66CCFC16-57F3-4AA4-87D5-9E08BA028344}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66CCFC16-57F3-4AA4-87D5-9E08BA028344}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66CCFC16-57F3-4AA4-87D5-9E08BA028344}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A490F8C-DAE9-4AD2-A7E6-DC1BFB64C1E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A490F8C-DAE9-4AD2-A7E6-DC1BFB64C1E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A490F8C-DAE9-4AD2-A7E6-DC1BFB64C1E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A490F8C-DAE9-4AD2-A7E6-DC1BFB64C1E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{934353FC-8133-4136-88ED-2B87028A5877}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{934353FC-8133-4136-88ED-2B87028A5877}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{934353FC-8133-4136-88ED-2B87028A5877}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{934353FC-8133-4136-88ED-2B87028A5877}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

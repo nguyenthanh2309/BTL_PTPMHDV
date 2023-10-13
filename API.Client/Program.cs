@@ -4,7 +4,7 @@ using BLL.Interfaces;
 using DAL;
 using DAL.Interfaces;
 
-namespace BTL
+namespace API.Client
 {
     public class Program
     {
@@ -19,12 +19,8 @@ namespace BTL
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
             builder.Services.AddTransient<IDatabaseHelper, DatabaseHelper>();
-            builder.Services.AddTransient<ISanPhamRepos, SanPhamRepos>();
-            builder.Services.AddTransient<ISanPhamBusiness, SanPhamBusiness>();
-            builder.Services.AddTransient<ITaiKhoanRepos, TaiKhoanRepos>();
-            builder.Services.AddTransient<ITaiKhoanBusiness, TaiKhoanBusiness>();
-            builder.Services.AddTransient<IKhachHangRepos, KhachHangRepos>();
-            builder.Services.AddTransient<IKhachHangBusiness, KhachHangBusiness>();
+            builder.Services.AddTransient<IUserRepos, UserRepos>();
+            builder.Services.AddTransient<IUserBusiness, UserBusiness>();
 
             var app = builder.Build();
 
