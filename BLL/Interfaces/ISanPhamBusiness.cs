@@ -9,7 +9,7 @@ namespace BLL
 {
     public partial interface ISanPhamBusiness
     {
-        SanPham GetSanPhamByID(string id);
+        object GetSanPhamByID(string id);
         bool Create(SanPham kh);
         bool Update(string id, SanPham kh);
         void Delete(string id);

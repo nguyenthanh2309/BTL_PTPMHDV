@@ -5,13 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DAL
+namespace DAL.Interfaces
 {
-    public partial interface ISanPhamRepos
+    public partial interface IHoaDonRepos
     {
-        object GetSanPhamByID(string id);
-        bool Create(SanPham kh);
-        bool Update(string id, SanPham kh);
+        HoaDon GetHoaDonByID(string id);
+        void Create(HoaDon hd);
+        void Update(HoaDon hd);
         void Delete(string id);
     }
 }

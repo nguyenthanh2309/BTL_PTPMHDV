@@ -11,7 +11,7 @@ namespace DAL
             _dbHelper = dbHelper;
         }
 
-        public SanPham GetSanPhamByID(string id)
+        public object GetSanPhamByID(string id)
         {
             string msgError = "";
             try

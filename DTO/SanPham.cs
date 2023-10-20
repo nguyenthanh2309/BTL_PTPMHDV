@@ -10,12 +10,10 @@ namespace DTO
 {
     public class SanPham
     {
-        [Key] public string ID { get; set; }
+        public string ID { get; set; }
         public string? TenSP { get; set; }
-        [ForeignKey("PhanLoaiID")]
         public string? PhanLoaiID { get; set; }
-        public PhanLoai? PhanLoai { get; set; }
-        [ForeignKey("NhaCCID")]
+        public PhanLoai PhanLoai { get; set; }
         public string NhaCCID { set; get; }
         public NhaCC NhaCC { get; set; }
         public int SoLuong { get; set; }

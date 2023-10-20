@@ -9,7 +9,7 @@ namespace DTO
 {
     public class KhachHang
     {
-        [Key] public string ID { get; set; }
+        public string ID { get; set; }
         public string TenKH { get; set; }
         public string SDT { get; set; }
         public string DiaChi { get; set; }

@@ -20,7 +20,7 @@ namespace API.Client.Controllers
         {
             var user = _userBusiness.Login(tk.TenTk, tk.MatKhau);
             if (user == null)
-                return BadRequest("Sai tai khoan hoac mat khau. Vui long xem lai" );
+                return NotFound("Sai tai khoan hoac mat khau. Vui long xem lai" );
             return Ok(new { taikhoan = user.TenTK, email = user.Email, token = user.Token });
         }
     }

@@ -26,9 +26,9 @@ namespace API.Admin.Controllers
         public IActionResult Create([FromBody] KhachHang kh)
         {
             _khachHangBusiness.Create(kh);
-            return Ok("San pham da duoc tao thanh cong");
+            return Ok("Khach hang da duoc tao thanh cong");
         }
-        [Route("update")]
+        [Route("update/{id}")]
         [HttpPut]
         public IActionResult Update(string id, [FromBody] KhachHang kh)
         {
@@ -36,13 +36,13 @@ namespace API.Admin.Controllers
             UtilFunctions.SetDefaultIfEmpty(kh, kh_target);
             var result = new
             {
-                Message = "San pham da duoc cap nhat thanh cong",
+                Message = "Thong tin khach hang da duoc cap nhat thanh cong",
                 KhachHang = kh
             };
             _khachHangBusiness.Update(id, kh);
             return Ok(result);
         }
-        [Route("delete")]
+        [Route("delete/{id}")]
         [HttpDelete]
         public IActionResult Delete(string id)
         {
@@ -50,9 +50,9 @@ namespace API.Admin.Controllers
             if (target != null)
             {
                 _khachHangBusiness.Delete(id);
-                return Ok("Da xoa san pham nay");
+                return Ok("Da xoa khach hang nay");
             }
-            return BadRequest("Co loi xay ra");
+            return NotFound("Khong tim thay khach hang nay");
         }
     }
 }

@@ -17,7 +17,7 @@ namespace BTL.Controllers
         }
         [Route("/getbyid/{id}")]
         [HttpGet]
-        public SanPham GetSanPhamByID(string id)
+        public object GetSanPhamByID(string id)
         {
             return _sanPhamBusiness.GetSanPhamByID(id);
         }
@@ -32,7 +32,7 @@ namespace BTL.Controllers
         [HttpPut]
         public IActionResult Update(string id, [FromBody] SanPham sp)
         {
-            SanPham sp_target = _sanPhamBusiness.GetSanPhamByID(id);
+            object sp_target = _sanPhamBusiness.GetSanPhamByID(id);
             UtilFunctions.SetDefaultIfEmpty(sp, sp_target);
             _sanPhamBusiness.Update(id, sp);
             return Ok("San pham da duoc cap nhat thanh cong");
@@ -41,7 +41,7 @@ namespace BTL.Controllers
         [HttpDelete]
         public IActionResult Delete(string id)
         {
-                SanPham target = _sanPhamBusiness.GetSanPhamByID(id);
+                object target = _sanPhamBusiness.GetSanPhamByID(id);
                 if (target != null) { 
                     _sanPhamBusiness.Delete(id);
                     return Ok("Da xoa san pham nay");

@@ -1,10 +1,8 @@
 
-using BLL;
-using BLL.Interfaces;
-using DAL;
-using DAL.Interfaces;
+using Ocelot.Middleware;
+using Ocelot.DependencyInjection;
 
-namespace API.Client
+namespace API.Gateway
 {
     public class Program
     {
@@ -18,11 +16,11 @@ namespace API.Client
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
-            builder.Services.AddTransient<IDatabaseHelper, DatabaseHelper>();
-            builder.Services.AddTransient<IUserRepos, UserRepos>();
-            builder.Services.AddTransient<IUserBusiness, UserBusiness>();
-            builder.Services.AddTransient<IHoaDonRepos, HoaDonRepos>();
-            builder.Services.AddTransient<IHoaDonBusiness, HoaDonBusiness>();
+
+            builder.Configuration.SetBasePath(builder.Environment.ContentRootPath)
+                                 .AddJsonFile("ocelot.json", optional: false, reloadOnChange: true);
+            builder.Services.AddControllers();
+            builder.Services.AddOcelot();
 
             var app = builder.Build();
 
@@ -39,6 +37,8 @@ namespace API.Client
 
 
             app.MapControllers();
+
+            app.UseOcelot().Wait();
 
             app.Run();
         }

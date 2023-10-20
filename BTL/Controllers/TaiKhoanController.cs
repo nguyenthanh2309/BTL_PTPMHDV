@@ -29,7 +29,7 @@ namespace API.Admin.Controllers
             _taiKhoanBusiness.Create(tk);
             return Ok("Tai khoan da duoc tao thanh cong");
         }
-        [Route("update")]
+        [Route("update/{id}")]
         [HttpPut]
         public IActionResult Update(string id, [FromBody] TaiKhoan tk)
         {
@@ -38,7 +38,7 @@ namespace API.Admin.Controllers
             _taiKhoanBusiness.Update(id, tk);
             return Ok("Tai khoan da duoc cap nhat thanh cong");
         }
-        [Route("delete")]
+        [Route("delete/{id}")]
         [HttpDelete]
         public IActionResult Delete(string id)
         {
