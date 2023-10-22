@@ -1,6 +1,10 @@
 
 using Ocelot.Middleware;
 using Ocelot.DependencyInjection;
+using BLL.Interfaces;
+using BLL;
+using DAL;
+using DAL.Interfaces;
 
 namespace API.Gateway
 {
@@ -33,8 +37,9 @@ namespace API.Gateway
 
             app.UseHttpsRedirection();
 
-            app.UseAuthorization();
+            app.UseAuthentication();
 
+            app.UseAuthorization();
 
             app.MapControllers();
 

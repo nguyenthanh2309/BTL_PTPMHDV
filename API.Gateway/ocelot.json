@@ -1,55 +1,31 @@
 {
-    "Routes": [
-      {
-        "DownstreamPathTemplate": "/api/admin/TaiKhoan/getbyid/{id}",
-        "DownstreamScheme": "http",
-        "DownstreamHostAndPorts": [
-          {
-            "Host": "localhost",
-            "Port": 5025
-          }
-        ],
-        "UpstreamPathTemplate": "/taikhoan/get/{id}",
-        "UpstreamHttpMethod": [ "GET" ]
-      },
-      {
-        "DownstreamPathTemplate": "/api/admin/TaiKhoan/create",
-        "DownstreamScheme": "http",
-        "DownstreamHostAndPorts": [
-          {
-            "Host": "localhost",
-            "Port": 5025
-          }
-        ],
-        "UpstreamPathTemplate": "/taikhoan/create",
-        "UpstreamHttpMethod": [ "POST" ]
-      },
-      {
-        "DownstreamPathTemplate": "/api/admin/TaiKhoan/update/{id}",
-        "DownstreamScheme": "http",
-        "DownstreamHostAndPorts": [
-          {
-            "Host": "localhost",
-            "Port": 5025
-          }
-        ],
-        "UpstreamPathTemplate": "/taikhoan/update/{id}",
-        "UpstreamHttpMethod": [ "PUT" ]
-      },
-      {
-        "DownstreamPathTemplate": "/api/admin/TaiKhoan/delete/{id}",
-        "DownstreamScheme": "http",
-        "DownstreamHostAndPorts": [
-          {
-            "Host": "localhost",
-            "Port": 5025
-          }
-        ],
-        "UpstreamPathTemplate": "/taikhoan/delete/{id}",
-        "UpstreamHttpMethod": [ "DELETE" ]
-      }
-    ],
-    "GlobalConfiguration": {
-      "BaseUrl": "https://localhost:44703"
+  "Routes": [
+    {
+      "DownstreamPathTemplate": "/api/admin/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5025
+        }
+      ],
+      "UpstreamPathTemplate": "/admin/{everything}",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5123
+        }
+      ],
+      "UpstreamPathTemplate": "/{everything}",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ]
     }
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "https://localhost:6000"
+  }
 }

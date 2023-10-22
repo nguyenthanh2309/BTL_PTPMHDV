@@ -53,13 +53,13 @@ namespace DAL
                 throw ex;
             }
         }
-        public bool Update(string id, SanPham sp)
+        public bool Update(SanPham sp)
         {
             string msgError = "";
             try
             {
                 var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "sp_update_san_pham",
-                "@id", id,
+                "@id", sp.ID,
                 "@tensp", sp.TenSP,
                 "@phanloaiid", sp.PhanLoaiID,
                 "@nhaccid", sp.NhaCCID,

@@ -16,13 +16,13 @@ namespace BLL
         {
             return _res.GetSanPhamByID(id);
         }
-        public bool Create(SanPham kh)
+        public bool Create(SanPham sp)
         {
-            return _res.Create(kh);
+            return _res.Create(sp);
         }
-        public bool Update(string id, SanPham kh)
+        public bool Update(SanPham sp)
         {
-            return _res.Update(id, kh);
+            return _res.Update(sp);
         }
 
         public void Delete(string id) {

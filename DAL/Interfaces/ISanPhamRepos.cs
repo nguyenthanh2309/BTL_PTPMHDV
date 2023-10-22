@@ -10,8 +10,8 @@ namespace DAL
     public partial interface ISanPhamRepos
     {
         object GetSanPhamByID(string id);
-        bool Create(SanPham kh);
-        bool Update(string id, SanPham kh);
+        bool Create(SanPham sp);
+        bool Update(SanPham sp);
         void Delete(string id);
     }
 }

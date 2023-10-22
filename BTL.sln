@@ -11,6 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BLL", "BLL\BLL.csproj", "{5
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Stored Procedure", "Stored Procedure", "{8A22EC57-1F6C-4721-A8FA-211160647D3C}"
 	ProjectSection(SolutionItems) = preProject
+		Stored Procedure\HoaDon_SP.sql = Stored Procedure\HoaDon_SP.sql
 		Stored Procedure\KhachHang_SP.sql = Stored Procedure\KhachHang_SP.sql
 		Stored Procedure\Login_SP.sql = Stored Procedure\Login_SP.sql
 		Stored Procedure\SanPham_SP.sql = Stored Procedure\SanPham_SP.sql
@@ -21,9 +22,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DAL", "DAL\DAL.csproj", "{9
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API.Client", "API.Client\API.Client.csproj", "{66CCFC16-57F3-4AA4-87D5-9E08BA028344}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Utils", "Utils\Utils.csproj", "{2A490F8C-DAE9-4AD2-A7E6-DC1BFB64C1E5}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API.Gateway", "API.Gateway\API.Gateway.csproj", "{FFC28BAE-A265-4AD8-BE0A-E055F939505D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API.Gateway", "API.Gateway\API.Gateway.csproj", "{BCBD80F7-0216-4620-9113-696EB2C514D7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,14 +50,10 @@ Global
 		{66CCFC16-57F3-4AA4-87D5-9E08BA028344}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{66CCFC16-57F3-4AA4-87D5-9E08BA028344}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{66CCFC16-57F3-4AA4-87D5-9E08BA028344}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2A490F8C-DAE9-4AD2-A7E6-DC1BFB64C1E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2A490F8C-DAE9-4AD2-A7E6-DC1BFB64C1E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2A490F8C-DAE9-4AD2-A7E6-DC1BFB64C1E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2A490F8C-DAE9-4AD2-A7E6-DC1BFB64C1E5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FFC28BAE-A265-4AD8-BE0A-E055F939505D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FFC28BAE-A265-4AD8-BE0A-E055F939505D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FFC28BAE-A265-4AD8-BE0A-E055F939505D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FFC28BAE-A265-4AD8-BE0A-E055F939505D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BCBD80F7-0216-4620-9113-696EB2C514D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCBD80F7-0216-4620-9113-696EB2C514D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCBD80F7-0216-4620-9113-696EB2C514D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCBD80F7-0216-4620-9113-696EB2C514D7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -15,9 +15,8 @@ namespace API.Client.Controllers
         {
             _hoaDonBusiness = hoaDonBusiness;
         }
-        [Route("get")]
-        [HttpGet]
-        public IActionResult GetSanPhamByID(string id) {
+        [HttpGet("{id}")]
+        public ActionResult GetSanPhamByID(string id) {
             var result = _hoaDonBusiness.GetHoaDonByID(id);
             if (result == null)
             {
@@ -25,28 +24,25 @@ namespace API.Client.Controllers
             }
             return Ok(result);
         }
-        [Route("post")]
         [HttpPost]
-        public IActionResult Create(HoaDon hd)
+        public ActionResult Create([FromBody] HoaDon hd)
         {
             _hoaDonBusiness.Create(hd);
             return Ok();
         }
-        [Route("update")]
         [HttpPut]
-        public IActionResult Update(HoaDon hd)
+        public ActionResult Update([FromBody] HoaDon hd)
         {
             _hoaDonBusiness.Update(hd);
             return Ok("Thanh cong");
         }
-        [Route("delete")]
-        [HttpDelete]
-        public IActionResult Delete(string id)
+        [HttpDelete("{id}")]
+        public ActionResult Delete(string id)
         {
-            _hoaDonBusiness.Delete(id);
-            var hdToDelete = _hoaDonBusiness.GetHoaDonByID(id);
-            if (hdToDelete != null)
+            var target = _hoaDonBusiness.GetHoaDonByID(id);
+            if (target != null)
             {
+                _hoaDonBusiness.Delete(id);
                 return BadRequest("Xoa khong thanh cong");
             }
             return Ok("Xoa thanh cong");

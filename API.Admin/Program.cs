@@ -39,7 +39,6 @@ namespace BTL
 
             app.UseAuthorization();
 
-
             app.MapControllers();
 
             app.Run();

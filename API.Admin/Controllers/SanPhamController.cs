@@ -2,9 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using BLL;
 using DTO;
-using Utils;
 
-namespace BTL.Controllers
+namespace API.Admin.Controllers
 {
     [Route("api/admin/[controller]")]
     [ApiController]
@@ -15,38 +14,33 @@ namespace BTL.Controllers
         {
             _sanPhamBusiness = sanPhamBusiness;
         }
-        [Route("/getbyid/{id}")]
+        [Route("{id}")]
         [HttpGet]
         public object GetSanPhamByID(string id)
         {
             return _sanPhamBusiness.GetSanPhamByID(id);
         }
-        [Route("create")]
         [HttpPost]
-        public IActionResult Create([FromBody] SanPham sp)
+        public ActionResult Create([FromBody] SanPham sp)
         {
             _sanPhamBusiness.Create(sp);
             return Ok("San pham da duoc tao thanh cong");
         }
-        [Route("update")]
         [HttpPut]
-        public IActionResult Update(string id, [FromBody] SanPham sp)
+        public ActionResult Update([FromBody] SanPham sp)
         {
-            object sp_target = _sanPhamBusiness.GetSanPhamByID(id);
-            UtilFunctions.SetDefaultIfEmpty(sp, sp_target);
-            _sanPhamBusiness.Update(id, sp);
+            _sanPhamBusiness.Update(sp);
             return Ok("San pham da duoc cap nhat thanh cong");
         }
-        [Route("delete")]
         [HttpDelete]
-        public IActionResult Delete(string id)
+        public ActionResult Delete(string id)
         {
-                object target = _sanPhamBusiness.GetSanPhamByID(id);
-                if (target != null) { 
-                    _sanPhamBusiness.Delete(id);
-                    return Ok("Da xoa san pham nay");
-                }
-            return BadRequest("Co loi xay ra");
+            var target = _sanPhamBusiness.GetSanPhamByID(id);
+            if (target != null) { 
+                _sanPhamBusiness.Delete(id);
+                return Ok("Da xoa san pham nay");
+            }
+            return NotFound("Khong tim thay san pham nay");
         }
     }
 }
