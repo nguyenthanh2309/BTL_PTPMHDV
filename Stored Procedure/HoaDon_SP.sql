@@ -12,6 +12,9 @@ as
 	end
 go
 
+select * from HoaDon
+select * from ChiTietHoaDon
+
 create proc sp_create_hoa_don 
 @trangthai nvarchar(20),
 @tenkh nvarchar(max),
@@ -21,9 +24,9 @@ create proc sp_create_hoa_don
 as
 	begin
 		declare @HoaDonID int
-		insert into HoaDon values (
-			@tenkh, @sdt, @diachi
-		)
+		insert into HoaDon (TrangThai,TenKH,SDT,DiaChi) 
+		values 
+		(@trangthai, @tenkh, @sdt, @diachi)
 		set @HoaDonID = (select SCOPE_IDENTITY());
 		if (@json_list_chitiethoadon is not null)
 		begin	

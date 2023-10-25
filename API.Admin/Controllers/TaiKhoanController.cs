@@ -9,6 +9,7 @@ namespace API.Admin.Controllers
 {
     [Route("api/admin/[controller]")]
     [ApiController]
+    [Authorize]
     public class TaiKhoanController : ControllerBase
     {
         private ITaiKhoanBusiness _taiKhoanBusiness;
@@ -17,23 +18,27 @@ namespace API.Admin.Controllers
             _taiKhoanBusiness = taiKhoanBusiness;
         }
         [HttpGet("{id}")]
+        [Authorize]
         public TaiKhoan GetTaiKhoanByID(string id)
         {
             return _taiKhoanBusiness.GetTaiKhoanByID(id);
         }
         [HttpPost]
+        [Authorize]
         public ActionResult Create([FromBody] TaiKhoan tk)
         {
             _taiKhoanBusiness.Create(tk);
             return Ok("Tai khoan da duoc tao thanh cong");
         }
         [HttpPut]
+        [Authorize]
         public ActionResult Update(string id, [FromBody] TaiKhoan tk)
         {
             _taiKhoanBusiness.Update(id, tk);
             return Ok("Tai khoan da duoc cap nhat thanh cong");
         }
         [HttpDelete("{id}")]
+        [Authorize]
         public ActionResult Delete(string id)
         {
             var target = _taiKhoanBusiness.GetTaiKhoanByID(id);

@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33723.286
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API.Admin", "BTL\API.Admin.csproj", "{5D2E11D1-B957-4BD3-8655-EA5F717F72B0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API.Admin", "API.Admin\API.Admin.csproj", "{5D2E11D1-B957-4BD3-8655-EA5F717F72B0}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DTO", "DTO\DTO.csproj", "{F52BD45D-8502-4EA3-8237-9062B2155390}"
 EndProject

@@ -1,6 +1,7 @@
 ﻿using BLL;
 using BLL.Interfaces;
 using DTO;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,6 +9,7 @@ namespace API.Client.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class HoaDonController : ControllerBase
     {
         private IHoaDonBusiness _hoaDonBusiness;
@@ -16,6 +18,7 @@ namespace API.Client.Controllers
             _hoaDonBusiness = hoaDonBusiness;
         }
         [HttpGet("{id}")]
+        [Authorize]
         public ActionResult GetSanPhamByID(string id) {
             var result = _hoaDonBusiness.GetHoaDonByID(id);
             if (result == null)
@@ -25,18 +28,21 @@ namespace API.Client.Controllers
             return Ok(result);
         }
         [HttpPost]
+        [Authorize]
         public ActionResult Create([FromBody] HoaDon hd)
         {
             _hoaDonBusiness.Create(hd);
             return Ok();
         }
         [HttpPut]
+        [Authorize]
         public ActionResult Update([FromBody] HoaDon hd)
         {
             _hoaDonBusiness.Update(hd);
             return Ok("Thanh cong");
         }
         [HttpDelete("{id}")]
+        [Authorize]
         public ActionResult Delete(string id)
         {
             var target = _hoaDonBusiness.GetHoaDonByID(id);

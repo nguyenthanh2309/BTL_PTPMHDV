@@ -3,6 +3,10 @@ using BLL;
 using BLL.Interfaces;
 using DAL;
 using DAL.Interfaces;
+using static DTO.Authentication;
+using System.Text;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 
 namespace BTL
 {
@@ -25,6 +29,32 @@ namespace BTL
             builder.Services.AddTransient<ITaiKhoanBusiness, TaiKhoanBusiness>();
             builder.Services.AddTransient<IKhachHangRepos, KhachHangRepos>();
             builder.Services.AddTransient<IKhachHangBusiness, KhachHangBusiness>();
+            builder.Services.AddTransient<IUserRepos, UserRepos>();
+            builder.Services.AddTransient<IUserBusiness, UserBusiness>();
+
+            IConfiguration configuration = builder.Configuration;
+            var appSettingsSection = configuration.GetSection("AppSettings");
+            builder.Services.Configure<AppSettings>(appSettingsSection);
+
+            var appSettings = appSettingsSection.Get<AppSettings>();
+            var key = Encoding.ASCII.GetBytes(appSettings.Secret);
+            builder.Services.AddAuthentication(x =>
+            {
+                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+            .AddJwtBearer(x =>
+            {
+                x.RequireHttpsMetadata = false;
+                x.SaveToken = true;
+                x.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(key),
+                    ValidateIssuer = false,
+                    ValidateAudience = false
+                };
+            });
 
             var app = builder.Build();
 
