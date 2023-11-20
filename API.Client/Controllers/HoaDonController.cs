@@ -9,7 +9,6 @@ namespace API.Client.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
     public class HoaDonController : ControllerBase
     {
         private IHoaDonBusiness _hoaDonBusiness;
@@ -28,11 +27,10 @@ namespace API.Client.Controllers
             return Ok(result);
         }
         [HttpPost]
-        [Authorize]
         public ActionResult Create([FromBody] HoaDon hd)
         {
             _hoaDonBusiness.Create(hd);
-            return Ok();
+            return Ok("Thanh cong");
         }
         [HttpPut]
         [Authorize]

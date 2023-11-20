@@ -39,6 +39,9 @@ namespace DAL
             try
             {
                 var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "sp_create_hoa_don",
+                "@id", hd.ID,
+                "@ngaytao", hd.NgayTao,
+                "@ngaythanhtoan", hd.NgayThanhToan,
                 "@trangthai", hd.TrangThai,
                 "@tenkh", hd.TenKH,
                 "@sdt", hd.SDT,

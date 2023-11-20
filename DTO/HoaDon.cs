@@ -9,6 +9,8 @@ namespace DTO
     public class HoaDon
     {
         public string ID { get; set; }
+        public DateTime NgayTao { get { return DateTime.MaxValue; } set { value = DateTime.MaxValue; } }
+        public DateTime NgayThanhToan { get { return DateTime.MaxValue; } set { value = DateTime.MaxValue; } }
         public string TrangThai { get; set; }
         public string TenKH { get; set; }
         public string SDT { get; set; }
@@ -18,7 +20,6 @@ namespace DTO
 
     public class ChiTietHoaDon
     {
-        public string ID { get; set; }
         public string HoaDonID { get; set; }
         public string SanPhamID { get; set; }
         public int SoLuong { get; set; }

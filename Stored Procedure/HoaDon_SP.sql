@@ -1,7 +1,7 @@
 use QuanLyNoiThat
 go
 
-create proc sp_get_hoa_don_by_id @id nvarchar(10)
+create proc sp_get_hoa_don_by_id @id int
 as
 	begin	
 		select hd.*, (
@@ -12,11 +12,11 @@ as
 	end
 go
 
-select * from HoaDon
-select * from ChiTietHoaDon
-
 create proc sp_create_hoa_don 
+@id int,
 @trangthai nvarchar(20),
+@ngaytao datetime,
+@ngaythanhtoan datetime,
 @tenkh nvarchar(max),
 @sdt nvarchar(12),
 @diachi nvarchar(max),
@@ -24,18 +24,18 @@ create proc sp_create_hoa_don
 as
 	begin
 		declare @HoaDonID int
-		insert into HoaDon (TrangThai,TenKH,SDT,DiaChi) 
+		insert into HoaDon
 		values 
-		(@trangthai, @tenkh, @sdt, @diachi)
-		set @HoaDonID = (select SCOPE_IDENTITY());
+		(@ngaytao, @ngaythanhtoan, @trangthai, @tenkh, @sdt, @diachi)
+		set @HoaDonID = @id
 		if (@json_list_chitiethoadon is not null)
 		begin	
 			insert into ChiTietHoaDon(HoaDonID, SanPhamID, SoLuong, TongGia)
 			select 
 				   @HoaDonID,
-				   JSON_VALUE(p.value, '$.SanPhamID'),
-				   JSON_VALUE(p.value, '$SoLuong'),
-				   JSON_VALUE(p.value, '$TongGia')
+				   JSON_VALUE(p.value, '$.sanPhamID'),
+				   JSON_VALUE(p.value, '$.soLuong'),
+				   JSON_VALUE(p.value, '$.tongGia')
 			from OPENJSON(@json_list_chitiethoadon) as p
 			end;
 		select '';
@@ -43,7 +43,7 @@ as
 go
 
 create proc sp_update_hoa_don 
-@id nvarchar(10),
+@id int,
 @trangthai nvarchar(20),
 @tenkh nvarchar(max),
 @sdt nvarchar(12),
@@ -103,7 +103,7 @@ as
 	end
 go
 
-create proc sp_delete_hoa_don @id nvarchar(10)
+create proc sp_delete_hoa_don @id int
 as 
 	begin
 		delete from HoaDon

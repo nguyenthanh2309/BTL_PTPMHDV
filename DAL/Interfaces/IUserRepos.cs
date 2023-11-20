@@ -10,5 +10,6 @@ namespace DAL.Interfaces
     public partial interface IUserRepos
     {
         TaiKhoan Login(string tenTk, string matKhau);
+        string SignUp(TaiKhoan tk);
     }
 }

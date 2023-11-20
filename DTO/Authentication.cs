@@ -10,15 +10,14 @@ namespace DTO
     public class Authentication
     {
         [Required]
-        public string TenTk { get; set; }
+        public string Username { get; set; }
 
         [Required]
-        public string MatKhau { get; set; }
+        public string Password { get; set; }
 
         public class AppSettings
         {
-            public string Secret { get; set; }
-
+            public string Access { get; set; }
         }
     }
 }

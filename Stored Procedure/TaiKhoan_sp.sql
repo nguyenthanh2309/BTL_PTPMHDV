@@ -8,7 +8,7 @@ as
 	end
 go
 
-create proc sp_create_tk @id nvarchar(10),
+create proc sp_create_tk
 @tentk nvarchar(max),
 @matkhau nvarchar(max),
 @email nvarchar(max),
@@ -16,7 +16,7 @@ create proc sp_create_tk @id nvarchar(10),
 as
 	begin
 		insert into TaiKhoan values (
-			@id, @tentk, @matkhau, @email, @loaitkid
+			@tentk, @matkhau, @email, @loaitkid
 		)
 	end
 go

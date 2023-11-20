@@ -27,20 +27,35 @@ namespace DAL
                 throw ex;
             }
         }
+
+        public List<SanPham> GetAllSanPham()
+        {
+            string msgError = "";
+            try
+            {
+                var dt = _dbHelper.ExecuteSProcedureReturnDataTable(out msgError, "sp_get_all_san_pham");
+                if (!string.IsNullOrEmpty(msgError))
+                    throw new Exception(msgError);
+                return (List<SanPham>)dt.ConvertTo<SanPham>();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         public bool Create (SanPham sp)
         {
             string msgError = "";
             try
             {
                 var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "sp_create_san_pham",
-                "@id", sp.ID,
                 "@tensp", sp.TenSP,
-                "@phanloaiid", sp.PhanLoaiID,
-                "@nhaccid", sp.NhaCCID,
-                "@gia", sp.Gia,
-                "@soluong", sp.SoLuong,
+                "@phanloaiid", sp.TenDanhMuc,
+                "@nhaccid", sp.TenNhaCC,
                 "@vatlieu", sp.VatLieu,
-                "@kichthuoc", sp.KichThuoc
+                "@kichthuoc", sp.KichThuoc,
+                "@soluong", sp.SoLuong,
+                "@gia", sp.Gia
                 );
                 if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
                 {
@@ -61,12 +76,12 @@ namespace DAL
                 var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "sp_update_san_pham",
                 "@id", sp.ID,
                 "@tensp", sp.TenSP,
-                "@phanloaiid", sp.PhanLoaiID,
-                "@nhaccid", sp.NhaCCID,
-                "@gia", sp.Gia,
-                "@soluong", sp.SoLuong,
+                "@phanloaiid", sp.TenDanhMuc,
+                "@nhaccid", sp.TenDanhMuc,
                 "@vatlieu", sp.VatLieu,
-                "@kichthuoc", sp.KichThuoc
+                "@kichthuoc", sp.KichThuoc,
+                "@soluong", sp.SoLuong,
+                "@gia", sp.Gia
                 );
                 if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
                 {

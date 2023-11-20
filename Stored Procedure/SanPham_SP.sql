@@ -1,7 +1,8 @@
 use QuanLyNoiThat
 go
 
-create proc sp_get_san_pham_by_id @id nvarchar(10)
+--lay san pham theo id
+create proc sp_get_san_pham_by_id @id int
 as
     begin
       select *
@@ -10,9 +11,10 @@ as
     end;
 go
 
-create proc sp_create_san_pham @id nvarchar(10),
+-- tao 1 san pham moi
+create proc sp_create_san_pham 
 @tensp nvarchar(max),
-@phanloaiid nvarchar(10),
+@danhmucid nvarchar(10),
 @nhaccid nvarchar(10),
 @gia int,
 @soluong int,
@@ -21,14 +23,16 @@ create proc sp_create_san_pham @id nvarchar(10),
 as
 	begin 
 		insert into SanPham values (
-			@id, @tensp, @phanloaiid, @nhaccid, @gia, @soluong, @vatlieu, @kichthuoc
+			@tensp, @danhmucid, @nhaccid, @vatlieu, @kichthuoc, @soluong, @gia
 		)
 	end
 go
 
-create proc sp_update_san_pham @id nvarchar(10),
+--cap nhat san pham
+create proc sp_update_san_pham 
+@id int,
 @tensp nvarchar(max),
-@phanloaiid nvarchar(10),
+@danhmucid nvarchar(10),
 @nhaccid nvarchar(10),
 @gia int,
 @soluong int,
@@ -38,19 +42,40 @@ as
 	begin
 		update SanPham
 		set TenSP = @tensp,
-		PhanLoaiID = @phanloaiid,
+		DanhMucID = @danhmucid,
 		NhaCCID = @nhaccid,
-		Gia = @gia,
-		SoLuong = @soluong,
 		VatLieu = @vatlieu,
-		KichThuoc = @kichthuoc
+		KichThuoc = @kichthuoc,
+		SoLuong = @soluong,
+		Gia = @gia
 		where ID = @id
 	end
 go
 
-create proc sp_delete_san_pham @id nvarchar(10)
+--xoa san pham
+create proc sp_delete_san_pham @id int
 as 
 	begin
 		delete from SanPham where ID = @id
+	end
+go
+
+--lay tat ca san pham
+create proc sp_get_all_san_pham 
+as
+	begin
+		select SanPham.ID, SanPham.TenSP, DanhMuc.TenDanhMuc, NhaCC.TenNhaCC, SanPham.VatLieu, SanPham.KichThuoc, SanPham.SoLuong, SanPham.Gia from ((SanPham
+		join DanhMuc on SanPham.DanhMucID = DanhMuc.ID)
+		join NhaCC on SanPham.NhaCCID = NhaCC.ID)
+	end
+go
+
+--lay san pham ban chay nhat
+create proc sp_get_san_pham_ban_chay @soluong int 
+as
+	begin
+		declare @quantity int
+		select * from SanPham join ChiTietHoaDon on ChiTietHoaDon.SanPhamID = SanPham.ID
+		
 	end
 go

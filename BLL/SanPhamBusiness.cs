@@ -16,6 +16,11 @@ namespace BLL
         {
             return _res.GetSanPhamByID(id);
         }
+
+        public List<SanPham> GetAllSanPham()
+        {
+            return _res.GetAllSanPham();
+        }
         public bool Create(SanPham sp)
         {
             return _res.Create(sp);

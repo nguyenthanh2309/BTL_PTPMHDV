@@ -37,7 +37,7 @@ namespace BTL
             builder.Services.Configure<AppSettings>(appSettingsSection);
 
             var appSettings = appSettingsSection.Get<AppSettings>();
-            var key = Encoding.ASCII.GetBytes(appSettings.Secret);
+            var access_key = Encoding.ASCII.GetBytes(appSettings.Access);
             builder.Services.AddAuthentication(x =>
             {
                 x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -50,12 +50,11 @@ namespace BTL
                 x.TokenValidationParameters = new TokenValidationParameters
                 {
                     ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = new SymmetricSecurityKey(key),
+                    IssuerSigningKey = new SymmetricSecurityKey(access_key),
                     ValidateIssuer = false,
                     ValidateAudience = false
                 };
             });
-
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -64,6 +63,11 @@ namespace BTL
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+
+            app.UseCors(x => x
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader());
 
             app.UseHttpsRedirection();
 

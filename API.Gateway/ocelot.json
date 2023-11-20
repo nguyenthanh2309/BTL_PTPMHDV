@@ -2,11 +2,11 @@
   "Routes": [
     {
       "DownstreamPathTemplate": "/api/admin/sanpham/{everything}",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 5025
+          "Port": 7283
         }
       ],
       "UpstreamPathTemplate": "/admin/sanpham/{everything}",
@@ -18,11 +18,11 @@
     },
     {
       "DownstreamPathTemplate": "/api/admin/khachang/{everything}",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 5025
+          "Port": 7283
         }
       ],
       "UpstreamPathTemplate": "/admin/khachhang/{everything}",
@@ -34,11 +34,11 @@
     },
     {
       "DownstreamPathTemplate": "/api/admin/taikhoan/{everything}",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 5025
+          "Port": 7283
         }
       ],
       "UpstreamPathTemplate": "/admin/taikhoan/{everything}",
@@ -50,23 +50,23 @@
     },
     {
       "DownstreamPathTemplate": "/api/admin/login",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 5025
+          "Port": 7283
         }
       ],
       "UpstreamPathTemplate": "/admin/login",
-      "UpstreamHttpMethod": [ "POST" ],
+      "UpstreamHttpMethod": [ "POST" ]
     },
     {
       "DownstreamPathTemplate": "/api/{everything}",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 5123
+          "Port": 7031
         }
       ],
       "UpstreamPathTemplate": "/{everything}",

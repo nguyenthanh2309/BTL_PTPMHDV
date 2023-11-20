@@ -1,4 +1,3 @@
-
 using Ocelot.Middleware;
 using Ocelot.DependencyInjection;
 using BLL.Interfaces;
@@ -35,19 +34,20 @@ namespace API.Gateway
             builder.Services.Configure<AppSettings>(appSettingsSection);
 
             var appSettings = appSettingsSection.Get<AppSettings>();
-            var key = Encoding.ASCII.GetBytes(appSettings.Secret);
+            var access_key = Encoding.ASCII.GetBytes(appSettings.Access);
 
             builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-                            .AddJwtBearer(options =>
+                            .AddJwtBearer(x =>
                             {
-                                options.TokenValidationParameters = new TokenValidationParameters
+                                x.RequireHttpsMetadata = false;
+                                x.SaveToken = true;
+                                x.TokenValidationParameters = new TokenValidationParameters
                                 {
-                                    ValidateLifetime = true,
+                                    ValidateIssuerSigningKey = true,
+                                    IssuerSigningKey = new SymmetricSecurityKey(access_key),
                                     ValidateIssuer = false,
-                                    ValidateAudience = false,
-                                    IssuerSigningKey = new SymmetricSecurityKey(key)
+                                    ValidateAudience = false
                                 };
-
                             });
             builder.Services.AddTransient<IDatabaseHelper, DatabaseHelper>();
             builder.Services.AddTransient<IUserRepos, UserRepos>();
@@ -61,6 +61,11 @@ namespace API.Gateway
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+
+            app.UseCors(x => x
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader());
 
             app.UseHttpsRedirection();
 

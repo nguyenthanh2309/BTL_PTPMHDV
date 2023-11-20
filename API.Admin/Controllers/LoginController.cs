@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using DTO;
+using Newtonsoft.Json;
 
 namespace API.Client.Controllers
 {
@@ -16,12 +17,16 @@ namespace API.Client.Controllers
             _userBusiness = userBusiness;
         }
         [HttpPost]
-        public ActionResult Login([FromBody] Authentication tk)
+        public string Login([FromBody] Authentication tk)
         {
-            var user = _userBusiness.Login(tk.TenTk, tk.MatKhau);
+            var user = _userBusiness.Login(tk.Username, tk.Password);
             if (user == null)
-                return NotFound("Tài khoản hoặc mật khẩu không đúng!");
-            return Ok(new { taikhoan = user.TenTK, email = user.Email, token = user.Token });
+                return "Khong tim thay tai khoan nay";
+            return JsonConvert.SerializeObject(new
+            {
+                access_token = user.AccessToken,
+                refresh_token = user.RefreshToken
+            });
         }
     }
 }

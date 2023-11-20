@@ -1,8 +1,8 @@
 ﻿using BLL.Interfaces;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using DTO;
+using System.Reflection;
 
 namespace API.Client.Controllers
 {
@@ -15,13 +15,13 @@ namespace API.Client.Controllers
         {
             _userBusiness = userBusiness;
         }
-        [HttpPost]
-        public ActionResult Login([FromBody] Authentication tk)
-        {
-            var user = _userBusiness.Login(tk.TenTk, tk.MatKhau);
-            if (user == null)
-                return NotFound("Tài khoản hoặc mật khẩu không đúng!");
-            return Ok(new { taikhoan = user.TenTK, email = user.Email, token = user.Token });
-        }
+
+        //[HttpPost]
+        //public ActionResult Login([FromForm] Authentication tk)
+        //{
+        //    var user = _userBusiness.Login(tk.TenTk, tk.MatKhau);
+        //    if (user == null) return BadRequest(new { message = "Tài khoản hoặc mật khẩu không đúng!" });
+        //    return Ok(new { taikhoan = user.TenTK, email = user.Email, token = user.Token });
+        //}
     }
 }

@@ -10,5 +10,6 @@ namespace BLL.Interfaces
     public partial interface IUserBusiness
     {
         TaiKhoan Login(string tenTk, string matKhau);
+        string SignUp(TaiKhoan tk);
     }
 }

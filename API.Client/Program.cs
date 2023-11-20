@@ -37,7 +37,7 @@ namespace API.Client
             builder.Services.Configure<AppSettings>(appSettingsSection);
 
             var appSettings = appSettingsSection.Get<AppSettings>();
-            var key = Encoding.ASCII.GetBytes(appSettings.Secret);
+            var key = Encoding.ASCII.GetBytes(appSettings.Access);
             builder.Services.AddAuthentication(x =>
             {
                 x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -64,6 +64,11 @@ namespace API.Client
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+
+            app.UseCors(x => x
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader());
 
             app.UseHttpsRedirection();
 

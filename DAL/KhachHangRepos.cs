@@ -38,7 +38,6 @@ namespace DAL
             try
             {
                 var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "sp_create_khach_hang",
-                "@id", kh.ID,
                 "@tenkh", kh.TenKH,
                 "@sdt", kh.SDT,
                 "@diachi", kh.DiaChi

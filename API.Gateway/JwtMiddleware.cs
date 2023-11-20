@@ -21,10 +21,10 @@ namespace API.Gateway
 
         public async Task GenerateToken(HttpContext context)
         {
-            var taiKhoan = context.Request.Form["username"].ToString();
-            var matKhau = context.Request.Form["password"].ToString();
-            var user = _userBusiness.Login(taiKhoan, matKhau);
-            var response = new { MaNguoiDung = user.ID, Email = user.Email, Token = user.Token };
+            var tenTk = context.Request.Form["tenTk"].ToString();
+            var matKhau = context.Request.Form["matKhau"].ToString();
+            var user = _userBusiness.Login(tenTk, matKhau);
+            var response = new { TenTaiKhoan = user.TenTK, Email = user.Email, access_token = user.AccessToken, refresh_token = user.RefreshToken };
             var serializerSettings = new JsonSerializerSettings
             {
                 Formatting = Formatting.Indented

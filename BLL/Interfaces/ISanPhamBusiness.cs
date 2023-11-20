@@ -13,5 +13,6 @@ namespace BLL
         bool Create(SanPham sp);
         bool Update(SanPham sp);
         void Delete(string id);
+        List<SanPham> GetAllSanPham();
     }
 }

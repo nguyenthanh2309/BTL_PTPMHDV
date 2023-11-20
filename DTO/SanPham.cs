@@ -10,11 +10,11 @@ namespace DTO
     {
         public string ID { get; set; }
         public string? TenSP { get; set; }
-        public string? PhanLoaiID { get; set; }
-        public string NhaCCID { set; get; }
+        public string? TenDanhMuc { get; set; }
+        public string TenNhaCC { set; get; }
+        public string? KichThuoc { get; set; }
+        public string? VatLieu { get; set; }
         public int SoLuong { get; set; }
         public int Gia { get; set; }
-        public string? VatLieu { get; set; }
-        public string? KichThuoc { get; set; }
     }
 }
