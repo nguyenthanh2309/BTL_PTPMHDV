@@ -17,7 +17,7 @@ namespace BLL
             _res = res;
         }
 
-        public HoaDon GetHoaDonByID(string id)
+        public HoaDon GetHoaDonByID(int id)
         {
             return _res.GetHoaDonByID(id);
         }
@@ -31,7 +31,7 @@ namespace BLL
         {
             _res.Update(hd);
         }
-        public void Delete(string id)
+        public void Delete(int id)
         {
             _res.Delete(id);
         }

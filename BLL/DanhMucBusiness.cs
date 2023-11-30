@@ -1,5 +1,4 @@
 ﻿using BLL.Interfaces;
-using DAL;
 using DAL.Interfaces;
 using DTO;
 using System;
@@ -10,31 +9,35 @@ using System.Threading.Tasks;
 
 namespace BLL
 {
-    public class TaiKhoanBusiness : ITaiKhoanBusiness
+    public class DanhMucBusiness:IDanhMucBusiness
     {
-        private ITaiKhoanRepos _res;
-        public TaiKhoanBusiness(ITaiKhoanRepos res)
+        private IDanhMucRepos _res;
+        public DanhMucBusiness(IDanhMucRepos res)
         {
             _res = res;
         }
-        public TaiKhoan GetTaiKhoanByID(int id)
+
+        public DanhMuc GetDanhMucByID(int id)
         {
-            return _res.GetTaiKhoanByID(id);
+            return _res.GetDanhMucByID(id); 
         }
-        public List<TaiKhoan> GetAllTaiKhoan()
+
+        public List<DanhMuc> GetAllDanhMuc()
         {
-            return _res.GetAllTaiKhoan();
+            return _res.GetAllDanhMuc();
         }
-        public void Create(TaiKhoan tk)
+
+        public void Create(DanhMuc muc)
         {
-            _res.Create(tk);
+            _res.Create(muc);
         }
+
         public void Update(string json)
         {
             _res.Update(json);
         }
 
-        public void Delete(int id)
+        public void Delete(int id) 
         {
             _res.Delete(id);
         }

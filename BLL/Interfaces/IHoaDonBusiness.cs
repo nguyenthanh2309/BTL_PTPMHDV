@@ -9,9 +9,9 @@ namespace BLL.Interfaces
 {
     public partial interface IHoaDonBusiness
     {
-        HoaDon GetHoaDonByID(string id);
+        HoaDon GetHoaDonByID(int id);
         void Create(HoaDon hd);
         void Update(HoaDon hd);
-        void Delete(string id);
+        void Delete(int id);
     }
 }

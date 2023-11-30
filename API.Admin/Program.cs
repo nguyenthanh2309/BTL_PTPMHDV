@@ -31,6 +31,10 @@ namespace BTL
             builder.Services.AddTransient<IKhachHangBusiness, KhachHangBusiness>();
             builder.Services.AddTransient<IUserRepos, UserRepos>();
             builder.Services.AddTransient<IUserBusiness, UserBusiness>();
+            builder.Services.AddTransient<IDanhMucRepos, DanhMucRepos>();
+            builder.Services.AddTransient<IDanhMucBusiness, DanhMucBusiness>();
+            builder.Services.AddTransient<INhaCCRepos, NhaCCRepos>();
+            builder.Services.AddTransient<INhaCCBusniess, NhaCCBusniess>();
 
             IConfiguration configuration = builder.Configuration;
             var appSettingsSection = configuration.GetSection("AppSettings");

@@ -12,7 +12,7 @@ namespace BLL
         {
             _res = res;
         }
-        public object GetSanPhamByID(string id)
+        public SanPham GetSanPhamByID(int id)
         {
             return _res.GetSanPhamByID(id);
         }
@@ -21,16 +21,16 @@ namespace BLL
         {
             return _res.GetAllSanPham();
         }
-        public bool Create(SanPham sp)
+        public void Create(SanPham sp)
         {
-            return _res.Create(sp);
+            _res.Create(sp);
         }
-        public bool Update(SanPham sp)
+        public void Update(string json)
         {
-            return _res.Update(sp);
+            _res.Update(json);
         }
 
-        public void Delete(string id) {
+        public void Delete(int id) {
             _res.Delete(id);
         }
 

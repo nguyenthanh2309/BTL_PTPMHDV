@@ -16,20 +16,24 @@ namespace BLL
         {
             _res = res;
         }
-        public KhachHang GetKhachHangByID(string id)
+        public KhachHang GetKhachHangByID(int id)
         {
             return _res.GetKhachHangByID(id);
+        }
+        public List<KhachHang> GetAllKhachHang()
+        {
+            return _res.GetAllKhachHang();
         }
         public void Create(KhachHang kh)
         {
             _res.Create(kh);
         }
-        public void Update(string id, KhachHang kh)
+        public void Update(KhachHang kh)
         {
-            _res.Update(id, kh);
+            _res.Update(kh);
         }
 
-        public void Delete(string id)
+        public void Delete(int id)
         {
             _res.Delete(id);
         }

@@ -9,7 +9,6 @@ namespace API.Admin.Controllers
 {
     [Route("api/admin/[controller]")]
     [ApiController]
-    [Authorize]
     public class TaiKhoanController : ControllerBase
     {
         private ITaiKhoanBusiness _taiKhoanBusiness;
@@ -19,35 +18,35 @@ namespace API.Admin.Controllers
         }
         [HttpGet("{id}")]
         [Authorize]
-        public TaiKhoan GetTaiKhoanByID(string id)
+        public TaiKhoan GetTaiKhoanByID(int id)
         {
             return _taiKhoanBusiness.GetTaiKhoanByID(id);
         }
+        [HttpGet("getall")]
+        [Authorize]
+        public List<TaiKhoan> GetAllTaiKhoan()
+        {
+            return _taiKhoanBusiness.GetAllTaiKhoan();
+        }
+        [Route("create")]
         [HttpPost]
         [Authorize]
-        public ActionResult Create([FromBody] TaiKhoan tk)
+        public ActionResult Create([FromForm] TaiKhoan tk)
         {
             _taiKhoanBusiness.Create(tk);
             return Ok("Tai khoan da duoc tao thanh cong");
         }
-        [HttpPut]
+        [HttpPost("update")]
         [Authorize]
-        public ActionResult Update(string id, [FromBody] TaiKhoan tk)
+        public void Update([FromBody] string json)
         {
-            _taiKhoanBusiness.Update(id, tk);
-            return Ok("Tai khoan da duoc cap nhat thanh cong");
+            _taiKhoanBusiness.Update(json);
         }
-        [HttpDelete("{id}")]
+        [HttpPost("{id}")]
         [Authorize]
-        public ActionResult Delete(string id)
+        public void Delete(int id)
         {
-            var target = _taiKhoanBusiness.GetTaiKhoanByID(id);
-            if (target != null)
-            {
-                _taiKhoanBusiness.Delete(id);
-                return Ok("Da xoa tai khoan nay");
-            }
-            return NotFound("Khong tim thay tai khoan nay");
+            _taiKhoanBusiness.Delete(id);
         }
     }
 }

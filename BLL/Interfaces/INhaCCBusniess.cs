@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace BLL.Interfaces
 {
-    public interface ITaiKhoanBusiness
+    public partial interface INhaCCBusniess
     {
-        TaiKhoan GetTaiKhoanByID(int id);
-        List<TaiKhoan> GetAllTaiKhoan();
-        void Create(TaiKhoan tk);
+        NhaCC GetNhaCCByID(int ID);
+        List<NhaCC> GetAllNhaCC();
+        void Create(NhaCC nhacc);
         void Update(string json);
-        void Delete(int id);
+        void Delete(int ID);
     }
 }

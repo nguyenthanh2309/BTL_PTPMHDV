@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    public class PhanLoai
+    public class DanhMuc
     {
-        public string ID { get; set; }
-        public string TenPL { get; set; }
+        public int ID { get; set; }
+        public string TenDanhMuc { get; set; }
     }
 }

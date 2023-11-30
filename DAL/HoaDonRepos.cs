@@ -17,7 +17,7 @@ namespace DAL
             _dbHelper = dbHelper;
         }
 
-        public HoaDon GetHoaDonByID(string id)
+        public HoaDon GetHoaDonByID(int id)
         {
             string msgError = "";
             try
@@ -81,7 +81,7 @@ namespace DAL
             }
         }
 
-        public void Delete(string id) {
+        public void Delete(int id) {
             string msgError = "";
             try
             {

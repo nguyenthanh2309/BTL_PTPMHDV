@@ -9,9 +9,10 @@ namespace DAL.Interfaces
 {
     public partial interface IKhachHangRepos
     {
-        KhachHang GetKhachHangByID(string id);
+        KhachHang GetKhachHangByID(int id);
+        List<KhachHang> GetAllKhachHang();
         void Create(KhachHang kh);
-        void Update(string id, KhachHang kh);
-        void Delete(string id);
+        void Update(KhachHang kh);
+        void Delete(int id);
     }
 }

@@ -9,10 +9,10 @@ namespace BLL
 {
     public partial interface ISanPhamBusiness
     {
-        object GetSanPhamByID(string id);
+        SanPham GetSanPhamByID(int id);
         bool Create(SanPham sp);
-        bool Update(SanPham sp);
-        void Delete(string id);
+        bool Update(string json);
+        void Delete(int id);
         List<SanPham> GetAllSanPham();
     }
 }

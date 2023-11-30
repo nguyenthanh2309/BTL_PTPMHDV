@@ -8,24 +8,24 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    public class KhachHangRepos : IKhachHangRepos
+    public class DanhMucRepos:IDanhMucRepos
     {
         private IDatabaseHelper _dbHelper;
-        public KhachHangRepos(IDatabaseHelper dbHelper)
+        public DanhMucRepos(IDatabaseHelper dbHelper)
         {
             _dbHelper = dbHelper;
         }
 
-        public KhachHang GetKhachHangByID(int id)
+        public DanhMuc GetDanhMucByID(int id)
         {
             string msgError = "";
             try
             {
-                var dt = _dbHelper.ExecuteSProcedureReturnDataTable(out msgError, "sp_get_khach_hang_by_id",
+                var dt = _dbHelper.ExecuteSProcedureReturnDataTable(out msgError, "sp_get_danh_muc_by_id",
                      "@id", id);
                 if (!string.IsNullOrEmpty(msgError))
                     throw new Exception(msgError);
-                return dt.ConvertTo<KhachHang>().FirstOrDefault();
+                return dt.ConvertTo<DanhMuc>().FirstOrDefault();
             }
             catch (Exception ex)
             {
@@ -33,30 +33,29 @@ namespace DAL
             }
         }
 
-        public List<KhachHang> GetAllKhachHang()
+        public List<DanhMuc> GetAllDanhMuc()
         {
             string msgError = "";
             try
             {
-                var dt = _dbHelper.ExecuteSProcedureReturnDataTable(out msgError, "sp_get_all_khach_hang");
+                var dt = _dbHelper.ExecuteSProcedureReturnDataTable(out msgError, "sp_get_all_danh_muc");
                 if (!string.IsNullOrEmpty(msgError))
                     throw new Exception(msgError);
-                return dt.ConvertTo<KhachHang>().ToList();
+                return dt.ConvertTo<DanhMuc>().ToList();
             }
             catch (Exception ex)
             {
                 throw ex;
             }
         }
-        public void Create(KhachHang kh)
+
+        public void Create(DanhMuc dm)
         {
             string msgError = "";
             try
             {
-                var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "sp_create_khach_hang",
-                "@tenkh", kh.TenKH,
-                "@sdt", kh.SDT,
-                "@diachi", kh.DiaChi
+                var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "sp_create_danh_muc",
+                "@tendanhmuc", dm.TenDanhMuc
                 );
                 if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
                 {
@@ -73,7 +72,7 @@ namespace DAL
             string msgError = "";
             try
             {
-                var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "sp_update_khach_hang",
+                var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "sp_update_multiple",
                 "@json", json
                 );
                 if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
@@ -92,7 +91,7 @@ namespace DAL
             string msgError = "";
             try
             {
-                var dt = _dbHelper.ExecuteSProcedureReturnDataTable(out msgError, "sp_delete_khach_hang",
+                var dt = _dbHelper.ExecuteSProcedureReturnDataTable(out msgError, "sp_delete_danh_muc",
                      "@id", id);
             }
             catch (Exception ex)

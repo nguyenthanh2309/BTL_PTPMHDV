@@ -11,7 +11,7 @@ namespace DAL
             _dbHelper = dbHelper;
         }
 
-        public object GetSanPhamByID(string id)
+        public SanPham GetSanPhamByID(int id)
         {
             string msgError = "";
             try
@@ -43,15 +43,15 @@ namespace DAL
                 throw ex;
             }
         }
-        public bool Create (SanPham sp)
+        public void Create (SanPham sp)
         {
             string msgError = "";
             try
             {
                 var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "sp_create_san_pham",
                 "@tensp", sp.TenSP,
-                "@phanloaiid", sp.TenDanhMuc,
-                "@nhaccid", sp.TenNhaCC,
+                "@danhmucid", sp.DanhMucID,
+                "@nhaccid", sp.NhaCCID,
                 "@vatlieu", sp.VatLieu,
                 "@kichthuoc", sp.KichThuoc,
                 "@soluong", sp.SoLuong,
@@ -61,33 +61,24 @@ namespace DAL
                 {
                     throw new Exception(Convert.ToString(result) + msgError);
                 }
-                return true;
             }
             catch (Exception ex)
             {
                 throw ex;
             }
         }
-        public bool Update(SanPham sp)
+        public void Update(string json)
         {
             string msgError = "";
             try
             {
                 var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "sp_update_san_pham",
-                "@id", sp.ID,
-                "@tensp", sp.TenSP,
-                "@phanloaiid", sp.TenDanhMuc,
-                "@nhaccid", sp.TenDanhMuc,
-                "@vatlieu", sp.VatLieu,
-                "@kichthuoc", sp.KichThuoc,
-                "@soluong", sp.SoLuong,
-                "@gia", sp.Gia
+                "@json", json
                 );
                 if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
                 {
                     throw new Exception(Convert.ToString(result) + msgError);
                 }
-                return true;
             }
             catch (Exception ex)
             {
@@ -95,7 +86,7 @@ namespace DAL
             }
         }
 
-        public void Delete(string id)
+        public void Delete(int id)
         {
             string msgError = "";
             try

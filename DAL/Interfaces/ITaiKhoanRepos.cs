@@ -9,9 +9,10 @@ namespace DAL.Interfaces
 {
     public partial interface ITaiKhoanRepos
     {
-        TaiKhoan GetTaiKhoanByID(string id);
-        bool Create(TaiKhoan tk);
-        bool Update(string id, TaiKhoan tk);
-        void Delete(string id);
+        TaiKhoan GetTaiKhoanByID(int id);
+        List<TaiKhoan> GetAllTaiKhoan();
+        void Create(TaiKhoan tk);
+        void Update(string json);
+        void Delete(int id);
     }
 }

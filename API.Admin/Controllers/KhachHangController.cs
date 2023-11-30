@@ -3,6 +3,7 @@ using DTO;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Text.Json;
 
 namespace API.Admin.Controllers
 {
@@ -18,35 +19,36 @@ namespace API.Admin.Controllers
         [Route("{id}")]
         [HttpGet]
         [Authorize]
-        public KhachHang GetKhachHangByID(string id)
+        public KhachHang GetKhachHangByID(int id)
         {
             return _khachHangBusiness.GetKhachHangByID(id);
         }
-        [HttpPost]
+        [Route("getall")]
+        [HttpGet]
         [Authorize]
-        public ActionResult Create([FromBody] KhachHang kh)
+        public List<KhachHang> GetAllKhachHang()
+        {
+            return _khachHangBusiness.GetAllKhachHang();
+        }
+        [HttpPost("create")]
+        [Authorize]
+        public ActionResult Create([FromForm] KhachHang kh)
         {
             _khachHangBusiness.Create(kh);
             return Ok("Khach hang da duoc tao thanh cong");
         }
-        [HttpPut]
+        [Route("update")]
+        [HttpPost]
         [Authorize]
-        public ActionResult Update(string id, [FromBody] KhachHang kh)
+        public void Update([FromBody] JsonElement json)
         {
-            _khachHangBusiness.Update(id, kh);
-            return Ok("Thong tin khach hang da duoc cap nhat thanh cong");
+            _khachHangBusiness.Update(json.ToString());
         }
-        [HttpDelete]
+        [HttpPost("delete")]
         [Authorize]
-        public ActionResult Delete(string id)
+        public void Delete(int id)
         {
             _khachHangBusiness.Delete(id);
-            var target = _khachHangBusiness.GetKhachHangByID(id);
-            if (target == null)
-            {
-                return Ok("Da xoa khach hang nay");
-            }
-            return NotFound("Khong tim thay khach hang nay");
         }
     }
 }

@@ -1,5 +1,4 @@
 ﻿using BLL.Interfaces;
-using DAL;
 using DAL.Interfaces;
 using DTO;
 using System;
@@ -10,30 +9,30 @@ using System.Threading.Tasks;
 
 namespace BLL
 {
-    public class TaiKhoanBusiness : ITaiKhoanBusiness
+    public class NhaCCBusniess:INhaCCBusniess
     {
-        private ITaiKhoanRepos _res;
-        public TaiKhoanBusiness(ITaiKhoanRepos res)
+        private INhaCCRepos _res;
+        
+        public NhaCCBusniess(INhaCCRepos res)
         {
             _res = res;
         }
-        public TaiKhoan GetTaiKhoanByID(int id)
+        public NhaCC GetNhaCCByID(int id)
         {
-            return _res.GetTaiKhoanByID(id);
+            return _res.GetNhaCCByID(id);
         }
-        public List<TaiKhoan> GetAllTaiKhoan()
+        public List<NhaCC> GetAllNhaCC()
         {
-            return _res.GetAllTaiKhoan();
+            return _res.GetAllNhaCC();
         }
-        public void Create(TaiKhoan tk)
+        public void Create(NhaCC nhacc)
         {
-            _res.Create(tk);
+            _res.Create(nhacc);
         }
         public void Update(string json)
         {
             _res.Update(json);
         }
-
         public void Delete(int id)
         {
             _res.Delete(id);

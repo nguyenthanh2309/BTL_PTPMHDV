@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 
 namespace API.Client.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/admin/[controller]")]
     [ApiController]
     public class LoginController : ControllerBase
     {
@@ -17,7 +17,7 @@ namespace API.Client.Controllers
             _userBusiness = userBusiness;
         }
         [HttpPost]
-        public string Login([FromBody] Authentication tk)
+        public string Login([FromForm] Authentication tk)
         {
             var user = _userBusiness.Login(tk.Username, tk.Password);
             if (user == null)

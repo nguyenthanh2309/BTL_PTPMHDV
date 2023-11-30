@@ -18,7 +18,7 @@ namespace API.Client.Controllers
         }
         [HttpGet("{id}")]
         [Authorize]
-        public ActionResult GetSanPhamByID(string id) {
+        public ActionResult GetSanPhamByID(int id) {
             var result = _hoaDonBusiness.GetHoaDonByID(id);
             if (result == null)
             {
@@ -41,7 +41,7 @@ namespace API.Client.Controllers
         }
         [HttpDelete("{id}")]
         [Authorize]
-        public ActionResult Delete(string id)
+        public ActionResult Delete(int id)
         {
             var target = _hoaDonBusiness.GetHoaDonByID(id);
             if (target != null)

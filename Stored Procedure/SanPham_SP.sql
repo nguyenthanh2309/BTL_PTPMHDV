@@ -28,32 +28,38 @@ as
 	end
 go
 
+
 --cap nhat san pham
-create proc sp_update_san_pham 
-@id int,
-@tensp nvarchar(max),
-@danhmucid nvarchar(10),
-@nhaccid nvarchar(10),
-@gia int,
-@soluong int,
-@vatlieu nvarchar(max),
-@kichthuoc nvarchar(max)
+create proc sp_update_san_pham @json nvarchar(max)
 as
 	begin
-		update SanPham
-		set TenSP = @tensp,
-		DanhMucID = @danhmucid,
-		NhaCCID = @nhaccid,
-		VatLieu = @vatlieu,
-		KichThuoc = @kichthuoc,
-		SoLuong = @soluong,
-		Gia = @gia
-		where ID = @id
+		if(@json is not null)
+		begin
+			select
+					JSON_VALUE(ListToEdit.value,'$.id') as ID,
+					JSON_VALUE(ListToEdit.value, '$.tenSP') as TenSP,
+					JSON_VALUE(ListToEdit.value, '$.danhMucID') as DanhMucID,
+					JSON_VALUE(ListToEdit.value, '$.kichThuoc') as KichThuoc,
+					JSON_VALUE(ListToEdit.value, '$.vatLieu') as VatLieu,
+					JSON_VALUE(ListToEdit.value, '$.soLuong') as SoLuong,
+					JSON_VALUE(ListToEdit.value, '$.gia') as Gia
+				into #ListToEdit
+			from OPENJSON(@json) as ListToEdit
+			update SanPham
+			set SanPham.TenSP = #ListToEdit.TenSP,
+				SanPham.DanhMucID = #ListToEdit.DanhMucID,
+				SanPham.KichThuoc = #ListToEdit.KichThuoc,
+				SanPham.VatLieu = #ListToEdit.VatLieu,
+				SanPham.SoLuong = #ListToEdit.SoLuong,
+				SanPham.Gia = #ListToEdit.Gia
+			from #ListToEdit
+			where SanPham.ID = #ListToEdit.ID
+		end
 	end
 go
 
 --xoa san pham
-create proc sp_delete_san_pham @id int
+alter proc sp_delete_san_pham @id int
 as 
 	begin
 		delete from SanPham where ID = @id

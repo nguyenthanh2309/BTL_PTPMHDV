@@ -18,34 +18,37 @@ namespace API.Admin.Controllers
         [Route("{id}")]
         [HttpGet]
         [Authorize]
-        public object GetSanPhamByID(string id)
+        public SanPham GetSanPhamByID(int id)
         {
             return _sanPhamBusiness.GetSanPhamByID(id);
         }
-        [HttpPost]
+        [Route("getall")]
+        [HttpGet]
         [Authorize]
-        public ActionResult Create([FromBody] SanPham sp)
+        public List<SanPham> GetAllSanPham()
+        {
+            return _sanPhamBusiness.GetAllSanPham();
+        }
+        [Route("create")]
+        [HttpPost]
+        public ActionResult Create([FromForm] SanPham sp)
         {
             _sanPhamBusiness.Create(sp);
             return Ok("San pham da duoc tao thanh cong");
         }
-        [HttpPut]
+        [Route("update")]
+        [HttpPost]
         [Authorize]
-        public ActionResult Update([FromBody] SanPham sp)
+        public void Update([FromBody] string json)
         {
-            _sanPhamBusiness.Update(sp);
-            return Ok("San pham da duoc cap nhat thanh cong");
+            _sanPhamBusiness.Update(json);
         }
-        [HttpDelete]
+        [Route("delete/{id}")]
+        [HttpPost]
         [Authorize]
-        public ActionResult Delete(string id)
+        public void Delete(int id)
         {
-            var target = _sanPhamBusiness.GetSanPhamByID(id);
-            if (target != null) { 
-                _sanPhamBusiness.Delete(id);
-                return Ok("Da xoa san pham nay");
-            }
-            return NotFound("Khong tim thay san pham nay");
+            _sanPhamBusiness.Delete(id);
         }
     }
 }

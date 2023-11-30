@@ -9,9 +9,10 @@ namespace BLL.Interfaces
 {
     public partial interface IKhachHangBusiness
     {
-        KhachHang GetKhachHangByID(string id);
+        KhachHang GetKhachHangByID(int id);
+        List<KhachHang> GetAllKhachHang();
         void Create(KhachHang kh);
-        void Update(string id, KhachHang kh);
-        void Delete(string id); 
+        void Update(string json);
+        void Delete(int id); 
     }
 }

@@ -16,9 +16,17 @@ namespace API.Client.Controllers
         }
 
         [HttpPost]
-        public string SignUp([FromForm] TaiKhoan tk)
+        public ActionResult SignUp([FromForm] TaiKhoan tk)
         {
-            return _userBusiness.SignUp(tk);
+            try
+            {
+                _userBusiness.SignUp(tk);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

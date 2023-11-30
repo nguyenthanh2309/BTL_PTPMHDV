@@ -16,7 +16,7 @@ namespace DAL
             _dbHelper = dbHelper;
         }
 
-        public TaiKhoan GetTaiKhoanByID(string id)
+        public TaiKhoan GetTaiKhoanByID(int id)
         {
             string msgError = "";
             try
@@ -32,7 +32,22 @@ namespace DAL
                 throw ex;
             }
         }
-        public bool Create(TaiKhoan tk)
+        public List<TaiKhoan> GetAllTaiKhoan()
+        {
+            string msgError = "";
+            try
+            {
+                var dt = _dbHelper.ExecuteSProcedureReturnDataTable(out msgError, "sp_get_all_tk");
+                if (!string.IsNullOrEmpty(msgError))
+                    throw new Exception(msgError);
+                return dt.ConvertTo<TaiKhoan>().ToList();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public void Create(TaiKhoan tk)
         {
             string msgError = "";
             try
@@ -47,30 +62,24 @@ namespace DAL
                 {
                     throw new Exception(Convert.ToString(result) + msgError);
                 }
-                return true;
             }
             catch (Exception ex)
             {
                 throw ex;
             }
         }
-        public bool Update(string id, TaiKhoan tk)
+        public void Update(string json)
         {
             string msgError = "";
             try
             {
                 var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "sp_update_tk",
-                "@id", id,
-                "@tentk", tk.TenTK,
-                "@matkhau", tk.MatKhau,
-                "@email", tk.Email,
-                "@loaitkid", tk.LoaiTaiKhoanID
+                "@json", json
                 );
                 if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
                 {
                     throw new Exception(Convert.ToString(result) + msgError);
                 }
-                return true;
             }
             catch (Exception ex)
             {
@@ -78,7 +87,7 @@ namespace DAL
             }
         }
 
-        public void Delete(string id)
+        public void Delete(int id)
         {
             string msgError = "";
             try
